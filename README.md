@@ -1,5 +1,4 @@
-# DrivingTest
-On-line driving test simulation system
+**基于PHP的在线驾考习题系统**
 
 ###架构：
    
@@ -24,6 +23,3 @@ On-line driving test simulation system
   科目一试题集
 
   科目二试题集
-
-
-

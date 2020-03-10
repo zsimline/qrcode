@@ -1,0 +1,36 @@
+h5{
+	font-size: 18px;
+	width: 100%;
+}
+
+h2{
+	border-bottom: solid 1px #DDDDDD; 
+	padding-bottom: 15px;
+}
+
+.subject{
+	width: 80%;
+	margin:auto;
+}
+
+.blocks{
+	width: 20%;
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	color:#434343;
+	padding: 15px;
+	border-radius: 8px;
+	border:solid 1px #EEEEEE;
+	margin:auto 8px;
+}
+
+.blocks:hover{
+	background-color: #CCFFFF;
+	color:#660000;
+}
+
+.blocks img{
+	width: 100px;
+	height: 100px;
+}

@@ -1,0 +1,37 @@
+#container{
+	width: 80%;
+	margin:auto;
+	margin-top: 35px;
+	background-color: rgb(241,241,241);
+	padding: 15px;
+	border-radius: 8px;
+	margin-top: 0px;
+	text-align:left;
+}
+
+#container a{
+	text-decoration: none;
+	display: inline-block;
+	width: 150px;
+	height: 40px;
+	border: solid 1px #CCCCCC;
+	border-radius: 5px;
+	text-align: center;
+	line-height: 40px;
+	margin: 10px;
+	color:#454545;
+}
+
+#container a:hover{
+	background-color: #99CCFF;
+	color:white;
+}
+
+h2{
+	text-align:left;
+	margin-left: 150px;
+	margin-top: 25px;
+	margin-bottom: 15px;
+	padding-left: 16px;
+	border-left: solid 3px green;
+}

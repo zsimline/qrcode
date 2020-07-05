@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -20,7 +21,19 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader' }
+          {
+            loader: 'css-loader',
+            options: {
+              url: true,
+              import: true,
+              sourceMap: true,
+              modules: {
+                mode: 'local',
+                exportGlobals: true,
+                localIdentName: '[folder]__[local]--[hash:base64:5]'
+              }
+            }
+          }
         ]
       }
     ]

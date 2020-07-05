@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { TextField, Button } from '@material-ui/core'
 
-import { createQRCodeInBrowser } from './utils/qrcode'
+import { createQRCodeInBrowser } from '../utils/qrcode'
+
+import styles from './index.css'
 
 const App = (): JSX.Element => {
   const [content, setContent] = useState<string>('')
@@ -28,7 +30,9 @@ const App = (): JSX.Element => {
       <canvas id="view" width="420px" height="420px">
         您的浏览器不支持Canvas
       </canvas>
-      <Button onClick={handleClick}>点击</Button>
+      <Button onClick={handleClick} className={styles.button}>
+        点击
+      </Button>
     </div>
   )
 }

@@ -1,0 +1,16 @@
+{
+	"grid-item": {
+		"prefix": "g",
+		"body": [
+			"<Grid item></Grid>"
+		],
+		"description": "grid-item"
+	},
+	"grid-container": {
+		"prefix": "gc",
+		"body": [
+			"<Grid container></Grid>"
+		],
+		"description": "grid-container"
+	},
+}

@@ -1,10 +1,13 @@
-import React, { useState, useCallback } from 'react'
-import { Grid, TextField, Button } from '@material-ui/core'
+import React, { useState, useCallback, FC } from 'react'
+import { Grid, TextField, Button, Tabs, Tab } from '@material-ui/core'
 
-import { useEffectOnce } from 'utils/hooks'
+import { useEffectOnce, useCallbackOnce } from 'utils/hooks'
 import { $ } from 'utils/tools'
 import { createQRCodeInBrowser, saveQRCode } from 'utils/qrcode'
+
+import Advanced from './tabs/Advanced'
 import styles from './index.css'
+import Color from './tabs/Color'
 
 // 初始化画布
 const initCanvas = (view: HTMLCanvasElement): void => {
@@ -13,16 +16,17 @@ const initCanvas = (view: HTMLCanvasElement): void => {
     numY = 300 / 12
   for (let i = 0; i < numX; i++) {
     for (let j = 0; j < numY; j++) {
-      ctx.fillStyle = i % 2 === j % 2 ? '#c6c6c6' : '#f7f7f7'
+      ctx.fillStyle = i % 2 === j % 2 ? '#CCCCCC' : '#FFFFFF'
       ctx.fillRect(i * 12, j * 12, 12, 12)
     }
   }
 }
 
-const App = (): JSX.Element => {
+const App: FC = (): JSX.Element => {
   const [view, setView] = useState<HTMLCanvasElement>()
   const [download, setDownload] = useState<HTMLLinkElement>()
   const [content, setContent] = useState<string>('')
+  const [tabValue, setTabValue] = useState<number>(0)
 
   useEffectOnce(() => {
     const view = $('view') as HTMLCanvasElement
@@ -50,6 +54,10 @@ const App = (): JSX.Element => {
   const handleSaveButtonClick = () => {
     saveQRCode(view, download)
   }
+
+  const handleTabChange = useCallbackOnce((e, newValue: number) => {
+    setTabValue(newValue)
+  })
 
   return (
     <div>
@@ -85,6 +93,20 @@ const App = (): JSX.Element => {
               >
                 保存图片
               </Button>
+              <Tabs
+                value={tabValue}
+                indicatorColor="primary"
+                textColor="primary"
+                onChange={handleTabChange}
+              >
+                <Tab value={0} label="颜色" />
+                <Tab value={1} label="形状" />
+                <Tab value={2} label="高级" />
+              </Tabs>
+              <div>
+                <Color index={0} value={tabValue} />
+                <Advanced index={1} value={tabValue} />
+              </div>
               <a
                 id="download"
                 download={'nnn'}

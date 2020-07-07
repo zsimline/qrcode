@@ -23,5 +23,7 @@
     "@typescript-eslint"
   ],
   "ignorePatterns": ["*.html","*.css"],
-  "rules": {}
+  "rules": {
+    "react/prop-types": "off"
+  }
 }

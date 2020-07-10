@@ -1,4 +1,18 @@
 {
+	"useSelector": {
+		"prefix": "use",
+		"body": [
+			"const $1 = useSelector().$2"
+		],
+		"description": "useSelector"
+	},
+	"useDispatch": {
+		"prefix": "use",
+		"body": [
+			"const $1 = useDispatch().$2"
+		],
+		"description": "useDispatch"
+	},
 	"grid-item": {
 		"prefix": "g",
 		"body": [
@@ -12,5 +26,5 @@
 			"<Grid container></Grid>"
 		],
 		"description": "grid-container"
-	},
+	}
 }

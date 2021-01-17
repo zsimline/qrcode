@@ -1,2 +1,0 @@
-# qrcode
-QR code

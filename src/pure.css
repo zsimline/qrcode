@@ -1,8 +1,0 @@
-:global(.text-center) {
-  text-align: center;
-}
-
-/* Disable Mui tab min-width. */
-:global(.MuiTab-root) {
-  min-width: 0px !important;
-}

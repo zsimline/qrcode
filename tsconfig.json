@@ -1,22 +1,24 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "target": "ES5",
-    "module": "AMD",
+    "rootDir": "./src",
     "baseUrl": "./src",
-    "rootDir": ".",
-    "jsx": "react",
+    "outDir": "./dist",
+    "lib": [
+      "ES5",
+      "ES6",
+      "DOM"
+    ],
     "allowJs": true,
-    "sourceMap": true,
+    "target": "ES5",
+    "module": "CommonJS",
     "strictNullChecks": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
+    "inlineSourceMap": true,
     "typeRoots": [
       "node_modules/@types"
     ]
   },
+  "extends": "./tsconfig.json",
   "exclude": [
-    "node_modules",
-    "dist"
+    "packages/server"
   ]
 }

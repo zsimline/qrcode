@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './src/main.tsx',
+  entry: './src/index.tsx',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
   devtool: 'inline-source-map',
@@ -26,12 +25,19 @@ module.exports = {
             options: {
               url: true,
               import: true,
-              sourceMap: true,
-              modules: {
-                exportGlobals: true,
-                localIdentName: '[folder]__[local]--[hash:base64:5]',
-              },
-              localsConvention: 'camelCase'
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets'
             }
           }
         ]
@@ -44,13 +50,8 @@ module.exports = {
     })
   ],
   resolve: {
-    alias: {
-      "@": path.resolve(__dirname, 'src'),
-      "store": path.resolve(__dirname, 'src/store'),
-      "components": path.resolve(__dirname, 'src/components'),
-      "utils": path.resolve(__dirname, 'src/utils')
-    },
-    extensions: ['.tsx', '.ts', '.js']
+    alias: {},
+    extensions: ['.tsx', '.ts']
   },
   devServer: {
     contentBase: './dist'

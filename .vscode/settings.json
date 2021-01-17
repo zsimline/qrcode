@@ -1,9 +1,0 @@
-{
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.wordWrapColumn": 80,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript"
-  ]
-}

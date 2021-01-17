@@ -10,15 +10,13 @@
     ],
     "allowJs": true,
     "target": "ES5",
+    "jsx": "react",
     "module": "CommonJS",
+    "esModuleInterop": true,
     "strictNullChecks": true,
     "inlineSourceMap": true,
     "typeRoots": [
       "node_modules/@types"
     ]
-  },
-  "extends": "./tsconfig.json",
-  "exclude": [
-    "packages/server"
-  ]
+  }
 }

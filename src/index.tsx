@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom'
 const root = document.getElementById('root')
 
 ReactDOM.render(
-  <div>xxx</div>,
+  <div>Welecome to mozi client.</div>,
   root
 )

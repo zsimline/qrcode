@@ -51,9 +51,14 @@ module.exports = {
   ],
   resolve: {
     alias: {},
-    extensions: ['.tsx', '.ts']
+    extensions: ['.tsx', '.ts', '.js']
   },
   devServer: {
+    port: 8193,
+    hot: true,
+    open: true,
+    clientLogLevel: 'warn',
+    progress: true,
     contentBase: './dist'
   }
 }

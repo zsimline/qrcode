@@ -1,5 +1,5 @@
 import React from "react"
-import useStyles from "./styles"
+import { makeStyles } from '@material-ui/core/styles'
 
 function Poster() {
   const styles = useStyles()
@@ -12,5 +12,12 @@ function Poster() {
   )
 }
 
+const useStyles = makeStyles({
+  image: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover'
+  }
+}, { name: 'Auth' })
 
 export default Poster

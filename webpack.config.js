@@ -50,7 +50,10 @@ module.exports = {
     })
   ],
   resolve: {
-    alias: {},
+    alias: {
+      "@": path.resolve(__dirname, 'src'),
+      "utils": path.resolve(__dirname, 'src/utils'),
+    },
     extensions: ['.tsx', '.ts', '.js']
   },
   devServer: {

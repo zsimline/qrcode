@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { Grid, Typography, Input, FormHelperText, InputAdornment, IconButton, Button } from "@material-ui/core"
-import { useTheme } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import classNames from "classnames"
 import { useForm } from "react-hook-form"
-import useStyles from "./styles"
 
 function SignUp() {
   const theme = useTheme()
@@ -86,5 +85,28 @@ function SignUp() {
     </Grid>
   )
 }
+
+const useStyles = makeStyles({
+  btnSignIn: {
+    width: 360,
+    borderRadius: 16
+  },
+  page: {
+    position: 'absolute',
+    background: '#fff',
+    margin: 0,
+    width: '100%',
+    height: '100%'
+  },
+  pageFront: {
+    transform: 'translateZ(1px)'
+  },
+  textField: {
+    width: 450,
+    border: '1px solid #d8e3fa',
+    borderRadius: 6,
+    padding: '8px 16px'
+  }
+}, { name: 'Auth' })
 
 export default SignUp

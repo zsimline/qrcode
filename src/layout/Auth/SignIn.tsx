@@ -4,7 +4,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import classNames from "classnames"
 import { useForm } from "react-hook-form"
-import net from "utils/net"
 
 function SignIn() {
   const theme = useTheme()
@@ -13,16 +12,6 @@ function SignIn() {
   const { register, handleSubmit, errors } = useForm()
 
   const [showPwd, setShowPwd] = useState<boolean>(false)
-
-  const onSubmit = (value) => {
-    net.post('http://localhost:8192/users', value)
-      .then(data => {
-        console.log(data)
-      })
-      .catch(error => {
-        console.log(error.message)
-      })
-  }
 
   return (
     <Grid
@@ -94,7 +83,7 @@ function SignIn() {
         <Button
           color="primary"
           variant="contained"
-          onClick={handleSubmit(onSubmit)}
+          // onClick={handleSubmit(onSubmit)}
           className={styles.btnSignIn}
         >Submit</Button>
       </Grid>

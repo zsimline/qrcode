@@ -4,6 +4,8 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import classNames from "classnames"
 import { useForm } from "react-hook-form"
+import net from "utils/net"
+import message from "utils/message"
 
 function SignUp() {
   const theme = useTheme()
@@ -13,7 +15,15 @@ function SignUp() {
 
   const [showPwd, setShowPwd] = useState<boolean>(false)
 
-  const onSubmit = () => {}
+  const onSubmit = (value) => {
+    net.post('http://localhost:8192/users', value)
+      .then(() => {
+        message.success('Sign up successful!')
+      })
+      .catch(error => {
+        message.error(error.message)
+      })
+  }
   
   return (
     <Grid

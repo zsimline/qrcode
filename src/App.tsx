@@ -1,6 +1,6 @@
 import React from 'react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-
+import { hot } from 'react-hot-loader/root'
 import Auth from './layout/Auth'
 
 const theme = createMuiTheme({
@@ -18,7 +18,7 @@ const theme = createMuiTheme({
   //     input: {
   //       padding: '8px 16px'
   //     }
-  //   }
+  //   } 
   // }
 })
 
@@ -30,4 +30,4 @@ function App() {
   )
 }
 
-export default App
+export default hot(App)

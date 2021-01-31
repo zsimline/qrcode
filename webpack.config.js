@@ -53,6 +53,9 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, 'src'),
       "utils": path.resolve(__dirname, 'src/utils'),
+      "components": path.resolve(__dirname, 'src/components'),
+      "services": path.resolve(__dirname, 'src/services'),
+      "constants": path.resolve(__dirname, 'src/constants')
     },
     extensions: ['.tsx', '.ts', '.js']
   },
@@ -62,6 +65,7 @@ module.exports = {
     open: true,
     clientLogLevel: 'warn',
     progress: true,
-    contentBase: './dist'
+    contentBase: './dist',
+    historyApiFallback: true
   }
 }

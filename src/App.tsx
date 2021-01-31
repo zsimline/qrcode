@@ -1,7 +1,8 @@
 import React from 'react'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
-import { hot } from 'react-hot-loader/root'
+import { BrowserRouter, Route } from 'react-router-dom'
 import Auth from './layout/Auth'
+import Home from './layout/Home'
 
 const theme = createMuiTheme({
   palette: {
@@ -25,9 +26,12 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Auth />
+      <BrowserRouter>
+        <Route path="/" exact component={Home} />
+        <Route path="/auth" exact component={Auth} />
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
 
-export default hot(App)
+export default App

@@ -4,14 +4,34 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import classNames from "classnames"
 import { useForm } from "react-hook-form"
+import message from "utils/message"
+import net from "utils/net"
+import { MButton } from "components/material"
+import services from "services"
 
 function SignIn() {
   const theme = useTheme()
   const styles = useStyles()
 
   const { register, handleSubmit, errors } = useForm()
-
+  const [loading, setLoading] = useState<boolean>(false)
   const [showPwd, setShowPwd] = useState<boolean>(false)
+
+  const onSubmit = (data) => {
+    setLoading(true)
+    services.user.signIn({
+      username: data.username,
+      password: data.password
+    })
+      .then(data => {
+        localStorage.setItem('token', data.token)
+        message.success('Sign up successful!')
+        setTimeout(() => location.href = './home', 500)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
 
   return (
     <Grid
@@ -80,12 +100,13 @@ function SignIn() {
         <Button href="https://mozi.mxsyx.site" color="primary">Forgot your password?</Button>
       </Grid>
       <Grid item>
-        <Button
+        <MButton
           color="primary"
           variant="contained"
-          // onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit(onSubmit)}
           className={styles.btnSignIn}
-        >Submit</Button>
+          loading={loading}
+        >Submit</MButton>
       </Grid>
     </Grid>
   )

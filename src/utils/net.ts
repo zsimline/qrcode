@@ -9,11 +9,22 @@
  * Lisense: GNU General Public License v3
  */
 
+import message from "./message"
+
 interface JSONPatch {
   op: 'add' | 'remove' | 'replace' | 'copy' | 'move' | 'test'
   from?: string
   path: string
   value: AnyObject
+}
+
+function handleError(
+  response: Response,
+  json: AnyObject,
+  reject: (reason?: any) => void
+) {
+  message.error(json.message || 'unknown error')
+  reject(json)
 }
 
 function post<T = AnyObject>(url: string, data: AnyObject) {
@@ -29,8 +40,9 @@ function post<T = AnyObject>(url: string, data: AnyObject) {
         mode: 'cors',
       })
       const json = await response.json()
-      response.ok ? resolve(json) : reject(json)
+      response.ok ? resolve(json) : handleError(response, json, reject)
     } catch (error) {
+      message.error(error.message)
       reject(error)
     }
   })
@@ -47,8 +59,9 @@ function del<T = AnyObject>(url: string) {
         mode: 'cors',
       })
       const json = await response.json()
-      response.ok ? resolve(json) : reject(json)
+      response.ok ? resolve(json) : handleError(response, json, reject)
     } catch (error) {
+      message.error(error.message)
       reject(error)
     }
   })
@@ -67,8 +80,9 @@ function put<T = AnyObject>(url: string, data: AnyObject) {
         mode: 'cors',
       })
       const json = await response.json()
-      response.ok ? resolve(json) : reject(json)
+      response.ok ? resolve(json) : handleError(response, json, reject)
     } catch (error) {
+      message.error(error.message)
       reject(error)
     }
   })
@@ -85,8 +99,9 @@ function get<T = AnyObject>(url: string, params: AnyObject) {
         mode: 'cors',
       })
       const json = await response.json()
-      response.ok ? resolve(json) : reject(json)
+      response.ok ? resolve(json) : handleError(response, json, reject)
     } catch (error) {
+      message.error(error.message)
       reject(error)
     }
   })
@@ -105,8 +120,9 @@ function patch<T = AnyObject>(url: string, data: JSONPatch | JSONPatch[]) {
         mode: 'cors',
       })
       const json = await response.json()
-      response.ok ? resolve(json) : reject(json)
+      response.ok ? resolve(json) : handleError(response, json, reject)
     } catch (error) {
+      message.error(error.message)
       reject(error)
     }
   })

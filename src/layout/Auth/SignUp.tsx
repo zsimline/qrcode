@@ -1,30 +1,35 @@
 import React, { useState } from "react"
-import { Grid, Typography, Input, FormHelperText, InputAdornment, IconButton, Button } from "@material-ui/core"
+import { Grid, Typography, Input, FormHelperText, InputAdornment, IconButton } from "@material-ui/core"
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Visibility, VisibilityOff } from "@material-ui/icons"
 import classNames from "classnames"
 import { useForm } from "react-hook-form"
-import net from "utils/net"
 import message from "utils/message"
+import { MButton } from "components/material"
+import services from "services"
 
 function SignUp() {
   const theme = useTheme()
   const styles = useStyles()
 
   const { register, handleSubmit, errors } = useForm()
-
+  const [loading, setLoading] = useState<boolean>(false)
   const [showPwd, setShowPwd] = useState<boolean>(false)
 
-  const onSubmit = (value) => {
-    net.post('http://localhost:8192/users', value)
+  const onSubmit = (data) => {
+    setLoading(true)
+    services.user.signUp({
+      username: data.username,
+      password: data.password
+    })
       .then(() => {
         message.success('Sign up successful!')
       })
-      .catch(error => {
-        message.error(error.message)
+      .finally(() => {
+        setLoading(false)
       })
   }
-  
+
   return (
     <Grid
       container
@@ -85,12 +90,13 @@ function SignUp() {
         </FormHelperText>
       </Grid>
       <Grid item>
-        <Button
+        <MButton
           color="primary"
           variant="contained"
           onClick={handleSubmit(onSubmit)}
           className={styles.btnSignIn}
-        >Submit</Button>
+          loading={loading}
+        >Submit</MButton>
       </Grid>
     </Grid>
   )
